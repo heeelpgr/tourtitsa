@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Τουρτίτσα Χελωνίτσα - Custom Τούρτες για Παιδιά και Μεγάλους</title>
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;overflow-x:hidden;background:#fff;color:#3a3a3a}
+
+:root{
+  --pink:#FF80AB;--pink-l:#FFD6E7;
+  --yellow:#FFD54F;--yellow-l:#FFF9C4;
+  --mint:#4DB6AC;--mint-l:#E0F7FA;
+  --purple:#CE93D8;--purple-l:#F3E5F5;
+  --sky:#6DBAEC;--grass:#4CAF50;
+  --r:22px;
+  --sh:0 6px 24px rgba(0,0,0,.11);
+  --sh2:0 14px 40px rgba(0,0,0,.18)
+}
+
+h1,h2,h3,.fn{font-family:'Fredoka One',cursive;letter-spacing:.02em}
+
+/* STICKY NAV */
+.snav{
+  position:fixed;top:-70px;left:0;right:0;z-index:999;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(14px);
+  display:flex;justify-content:center;flex-wrap:wrap;gap:.3rem;
+  padding:.65rem 1rem;box-shadow:0 2px 14px rgba(0,0,0,.09);
+  transition:top .3s ease
+}
+.snav.up{top:0}
+.snav a{
+  text-decoration:none;color:#555;font-weight:800;font-size:.82rem;
+  padding:.28rem .75rem;border-radius:20px;transition:background .2s,color .2s;
+  white-space:nowrap
+}
+.snav a:hover{background:var(--pink-l);color:var(--pink)}
+
+/* HERO */
+.hero{
+  position:relative;min-height:100vh;
+  background:linear-gradient(180deg,#5BB8F5 0%,#87CEEB 28%,#B8E4F9 55%,#C5F0A4 72%,#7DC67E 85%,#4CAF50 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:5rem 1.5rem 6rem;overflow:hidden;text-align:center
+}
+
+/* σύννεφα */
+.cl{position:absolute;background:rgba(255,255,255,.88);border-radius:50px;pointer-events:none}
+.cl::before,.cl::after{content:'';position:absolute;background:rgba(255,255,255,.88);border-radius:50%}
+.c1{width:190px;height:58px;top:12%;animation:d1 26s linear infinite}
+.c1::before{width:95px;height:78px;top:-40px;left:22px}
+.c1::after{width:115px;height:68px;top:-30px;left:70px}
+.c2{width:260px;height:75px;top:24%;animation:d2 38s linear infinite 4s}
+.c2::before{width:130px;height:100px;top:-52px;left:32px}
+.c2::after{width:150px;height:85px;top:-40px;left:98px}
+.c3{width:160px;height:48px;top:7%;animation:d3 21s linear infinite 11s}
+.c3::before{width:80px;height:65px;top:-34px;left:16px}
+.c3::after{width:95px;height:58px;top:-26px;left:58px}
+.c4{width:210px;height:63px;top:38%;animation:d4 44s linear infinite 7s}
+.c4::before{width:105px;height:85px;top:-44px;left:28px}
+.c4::after{width:125px;height:72px;top:-34px;left:80px}
+
+@keyframes d1{from{left:-220px}to{left:110vw}}
+@keyframes d2{from{left:-280px}to{left:110vw}}
+@keyframes d3{from{left:110vw}to{left:-200px}}
+@keyframes d4{from{left:-240px}to{left:110vw}}
+
+.hero-logo{
+  width:clamp(200px,42vw,350px);z-index:2;position:relative;
+  filter:drop-shadow(0 14px 28px rgba(0,0,0,.22));
+  animation:logo-float 4s ease-in-out infinite
+}
+@keyframes logo-float{
+  0%,100%{transform:translateY(0) rotate(-2.5deg)}
+  50%{transform:translateY(-18px) rotate(2.5deg)}
+}
+
+.hero h1{
+  font-size:clamp(2.4rem,7vw,5rem);color:#fff;
+  text-shadow:0 3px 10px rgba(0,0,0,.2),0 0 40px rgba(255,200,80,.35);
+  margin-top:.9rem;line-height:1.05;z-index:2;position:relative
+}
+.hero h1 span{color:#FFD54F}
+.hero-sub{
+  font-size:clamp(.95rem,2.5vw,1.35rem);color:rgba(255,255,255,.96);
+  font-weight:800;margin-top:.5rem;
+  text-shadow:0 2px 6px rgba(0,0,0,.15);
+  z-index:2;position:relative
+}
+.hero-phone{
+  display:inline-flex;align-items:center;gap:.5rem;margin-top:2rem;
+  background:#fff;color:var(--pink);font-size:1.4rem;font-weight:900;
+  padding:.85rem 2.4rem;border-radius:50px;text-decoration:none;
+  box-shadow:var(--sh);transition:transform .2s,box-shadow .2s;
+  z-index:2;position:relative;font-family:'Nunito',sans-serif
+}
+.hero-phone:hover{transform:translateY(-5px) scale(1.04);box-shadow:var(--sh2)}
+
+.hero-grass{
+  position:absolute;bottom:0;left:0;right:0;height:90px;
+  display:flex;align-items:flex-end;justify-content:space-around;
+  padding:0 10px 4px;font-size:1.9rem;pointer-events:none;z-index:1
+}
+.scroll-dn{
+  position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);
+  font-size:1.8rem;animation:dn 1.6s ease-in-out infinite;z-index:3;
+  text-decoration:none;cursor:pointer
+}
+@keyframes dn{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+
+/* SECTIONS */
+section{padding:5rem 1.5rem}
+.wrap{max-width:1100px;margin:0 auto}
+.s-title{font-size:clamp(1.9rem,5vw,3.2rem);text-align:center;margin-bottom:.4rem}
+.s-sub{text-align:center;font-size:1.05rem;color:#777;margin-bottom:3rem}
+
+/* PROMO */
+.promo{background:linear-gradient(135deg,#FFF9C4 0%,#FFE0EF 50%,#E0F7FA 100%)}
+.promo-intro{
+  font-size:clamp(1rem,2.2vw,1.15rem);text-align:center;
+  max-width:750px;margin:0 auto 3rem;line-height:1.8;color:#444
+}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.pc{
+  background:#fff;border-radius:var(--r);padding:2rem 1.5rem;text-align:center;
+  box-shadow:var(--sh);transition:transform .25s,box-shadow .25s;
+  opacity:0;transform:translateY(40px)
+}
+.pc.visible{opacity:1;transform:translateY(0)}
+.pc:hover{transform:translateY(-9px) rotate(1.2deg);box-shadow:var(--sh2)}
+.pc .ico{font-size:2.8rem;margin-bottom:.9rem;display:block}
+.pc h3{font-size:1.25rem;margin-bottom:.4rem}
+.pc p{font-size:.93rem;color:#666;line-height:1.6}
+.tp{border-top:5px solid}
+.tp-pink{border-color:var(--pink)}.tp-yellow{border-color:var(--yellow)}
+.tp-mint{border-color:var(--mint)}.tp-purple{border-color:var(--purple)}
+
+/* GALLERY */
+.gallery-sec{background:linear-gradient(135deg,#E8F5E9 0%,#F3E5F5 100%)}
+
+/* tabs */
+.tabs{
+  display:flex;justify-content:center;gap:.8rem;margin-bottom:2rem;
+  flex-wrap:wrap
+}
+.tab-btn{
+  font-family:'Fredoka One',cursive;font-size:1.1rem;
+  padding:.6rem 2rem;border-radius:50px;border:3px solid transparent;
+  cursor:pointer;transition:all .25s;background:#fff;color:#888;
+  box-shadow:var(--sh)
+}
+.tab-btn.kids-tab.active{background:var(--mint-l);border-color:var(--mint);color:#00695C}
+.tab-btn.adults-tab.active{background:var(--pink-l);border-color:var(--pink);color:#880E4F}
+.tab-btn:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+
+.badge{
+  display:inline-block;background:#F44336;color:#fff;
+  font-size:.72rem;font-weight:900;padding:.12rem .6rem;
+  border-radius:50px;margin-left:.35rem;vertical-align:middle;
+  font-family:'Nunito',sans-serif
+}
+
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* slideshow */
+.sshow{
+  position:relative;max-width:560px;margin:0 auto;
+  border-radius:26px;overflow:hidden;
+  box-shadow:0 22px 60px rgba(0,0,0,.2);background:#e8e8e8;
+  aspect-ratio:1/1
+}
+.sshow img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:opacity .45s ease
+}
+
+/* loader */
+.sloader{
+  position:absolute;inset:0;background:rgba(255,255,255,.93);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.8rem;z-index:5
+}
+.sloader.gone{display:none}
+.sl-ico{font-size:3.6rem;animation:lbounce .55s ease-in-out infinite alternate}
+@keyframes lbounce{from{transform:translateY(0) rotate(-12deg) scale(1)}to{transform:translateY(-20px) rotate(12deg) scale(1.12)}}
+.sl-txt{font-size:1rem;font-weight:800;color:var(--pink);font-family:'Fredoka One',cursive}
+
+/* βελάκια */
+.sarr{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,.9);border:none;
+  width:44px;height:44px;border-radius:50%;font-size:1.35rem;
+  cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.14);transition:transform .2s,background .2s;color:#333
+}
+.sarr:hover{background:#fff;transform:translateY(-50%) scale(1.18)}
+.sarr.pv{left:10px}.sarr.nx{right:10px}
+
+/* dots */
+.sdots{
+  position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+  display:flex;gap:5px;z-index:10
+}
+.sdot{
+  width:7px;height:7px;border-radius:50%;
+  background:rgba(255,255,255,.45);border:2px solid rgba(255,255,255,.7);
+  cursor:pointer;transition:all .3s
+}
+.sdot.on{background:#fff;transform:scale(1.35)}
+
+/* counter */
+.scnt{
+  position:absolute;top:10px;right:10px;
+  background:rgba(0,0,0,.36);color:#fff;
+  font-size:.75rem;font-weight:800;
+  padding:.22rem .6rem;border-radius:20px;z-index:10
+}
+
+/* BLUR OVERLAY για τη συγκεκριμένη εικόνα */
+.blur-ov{
+  position:absolute;inset:0;z-index:6;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
+  background:rgba(20,20,20,.52);backdrop-filter:blur(3px)
+}
+.bo-ico{font-size:3rem}
+.bo-btn{
+  background:linear-gradient(135deg,var(--pink),#FF4081);
+  color:#fff;font-family:'Fredoka One',cursive;font-size:1.1rem;
+  padding:.7rem 2rem;border-radius:50px;border:none;
+  cursor:pointer;box-shadow:0 6px 20px rgba(255,64,129,.4);
+  transition:transform .2s
+}
+.bo-btn:hover{transform:scale(1.07)}
+
+/* VIDEO */
+.vidsec{
+  background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);
+  text-align:center;color:#fff
+}
+.vidsec .s-title{color:#FFD54F}
+.vidsec .s-sub{color:rgba(255,255,255,.6)}
+.vid-wrap{
+  max-width:660px;margin:0 auto;border-radius:22px;overflow:hidden;
+  box-shadow:0 28px 70px rgba(0,0,0,.5),0 0 0 3px rgba(255,213,79,.25)
+}
+.vid-wrap video{width:100%;display:block;background:#000}
+.sparkles{
+  display:flex;justify-content:center;gap:.9rem;
+  font-size:1.7rem;margin-top:1.4rem;
+  animation:spk 2.2s ease-in-out infinite
+}
+@keyframes spk{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+
+/* CONTACT */
+.ctsec{
+  background:linear-gradient(135deg,#FFB3C6 0%,#FFC8DD 50%,#FFD6E7 100%);
+  text-align:center
+}
+.ct-card{
+  background:#fff;border-radius:30px;padding:2.5rem 2rem;
+  max-width:480px;margin:0 auto;
+  box-shadow:0 18px 55px rgba(255,128,171,.3)
+}
+.ct-name{font-size:1.9rem;color:var(--pink);margin-bottom:.2rem}
+.ct-ph{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:2rem;font-weight:900;color:#333;
+  text-decoration:none;margin-top:.9rem;
+  transition:transform .2s;font-family:'Fredoka One',cursive
+}
+.ct-ph:hover{transform:scale(1.06)}
+.ct-hearts{font-size:1.4rem;margin:1rem 0;animation:logo-float 3s ease-in-out infinite}
+.ct-note{margin-top:1.2rem;color:#bbb;font-size:.88rem}
+
+/* FOOTER */
+footer{
+  background:#2b2b2b;color:rgba(255,255,255,.4);
+  text-align:center;padding:2rem 1rem;font-size:.78rem
+}
+.ft-logo{width:65px;opacity:.5;margin-bottom:.7rem}
+footer a{color:rgba(255,255,255,.28);text-decoration:none}
+footer a:hover{color:rgba(255,255,255,.55)}
+
+/* extra services pills */
+.extras{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:1.8rem
+}
+.extras span{
+  background:#fff;border-radius:50px;padding:.45rem 1.1rem;
+  font-size:.88rem;font-weight:700;color:#555;box-shadow:var(--sh);
+  transition:transform .2s
+}
+.extras span:hover{transform:translateY(-3px)}
+
+/* BACK TO TOP */
+.btt{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--pink);color:#fff;border:none;
+  width:48px;height:48px;border-radius:50%;font-size:1.3rem;
+  cursor:pointer;box-shadow:var(--sh);z-index:998;
+  display:none;align-items:center;justify-content:center;
+  transition:transform .2s,background .2s
+}
+.btt.show{display:flex}
+.btt:hover{transform:scale(1.15);background:#FF4081}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .cards{grid-template-columns:1fr 1fr}
+  .sshow{border-radius:18px}
+  .sarr{width:36px;height:36px;font-size:1.05rem}
+  .snav a{font-size:.72rem;padding:.22rem .55rem}
+}
+@media(max-width:360px){.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav class="snav" id="snav">
+  <a href="#top">🐢 Αρχή</a>
+  <a href="#promo">🎂 Υπηρεσίες</a>
+  <a href="#video">🎬 Βίντεο</a>
+  <a href="#gallery">🖼 Δουλειές</a>
+  <a href="#contact">📞 Επικοινωνία</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="cl c1"></div>
+  <div class="cl c2"></div>
+  <div class="cl c3"></div>
+  <div class="cl c4"></div>
+
+  <img src="logo.png" alt="Τουρτίτσα Χελωνίτσα" class="hero-logo">
+
+  <h1 class="fn">Τουρτίτσα<br><span>Χελωνίτσα</span></h1>
+  <p class="hero-sub">Custom τούρτες για παιδιά και μεγάλους ✨</p>
+  <a href="tel:6944759426" class="hero-phone">📞 6944 759 426</a>
+
+  <div class="hero-grass">
+    🌸 🌼 🌻 🌺 🌷 🌼 🌸 🌻 🌺 🌷 🌸 🌼 🌻 🌺 🌷 🌸
+  </div>
+  <a href="#promo" class="scroll-dn">⬇️</a>
+</section>
+
+<!-- ΥΠΗΡΕΣΙΕΣ -->
+<section class="promo" id="promo">
+  <div class="wrap">
+    <h2 class="s-title fn" style="color:#C2185B">🎂 Τι κάνουμε;</h2>
+    <p class="s-sub">Κάθε τούρτα είναι μοναδική, φτιαγμένη με αγάπη, φαντασία και πολύ μεράκι!</p>
+
+    <p class="promo-intro">
+      Φαντάσου τη <strong>τέλεια τούρτα για τα γενέθλια</strong>, αυτή που θα κάνει τα μάτια όλων να λάμψουν και το κεράκι να φτάσει ψηλά! 🎉 Αναλαμβάνουμε <strong>custom παραγγελίες</strong> για κάθε περίσταση, μεγάλη ή μικρή. Είτε θέλεις κάτι <em>παιχνιδιάρικο για τα παιδιά</em> με τους αγαπημένους τους ήρωες, είτε κάτι <em>ξεχωριστό και προσωποποιημένο ειδικά για την περίσταση</em>, εδώ είμαστε!
+      <br><br>
+      Δεν ξέρεις τι θέλεις; <strong>Ελα να το συζητήσουμε</strong> και μαζί θα βρούμε κάτι που θα σε ενθουσιάσει! Συνεργαζόμαστε και με ζαχαροπλαστεία για το τέλειο αποτέλεσμα. 🥰
+    </p>
+
+    <div class="cards">
+      <div class="pc tp tp-pink">
+        <span class="ico">🧒🎈</span>
+        <h3>Παιδικές Τούρτες</h3>
+        <p>Με τους αγαπημένους ήρωες των παιδιών! Disney, Peppa Pig, Minecraft, Barbie, ό,τι ονειρεύεται η μικρή σου ψυχούλα, εμείς το φτιάχνουμε!</p>
+      </div>
+      <div class="pc tp tp-yellow">
+        <span class="ico">🥂🎊</span>
+        <h3>Τούρτες για Ενήλικες</h3>
+        <p>Χιουμοριστικές, ρομαντικές, εντελώς προσωποποιημένες. Γιατί κι εσείς αξίζετε μια τούρτα που μιλάει ακριβώς για ΤΟΝ ΑΓΑΠΗΜΕΝΟ ΣΑΣ!</p>
+      </div>
+      <div class="pc tp tp-mint">
+        <span class="ico">🤝🍰</span>
+        <h3>Συνεργασία με Εργαστήρια</h3>
+        <p>Συνεργαζόμαστε ως εξωτερικοί συνεργάτες με ζαχαροπλαστεία και εργαστήρια για ό,τι χρειαστούν. Εμείς η δημιουργία, εσείς η γεύση!</p>
+      </div>
+      <div class="pc tp tp-purple">
+        <span class="ico">💌🖨️</span>
+        <h3>Προσκλητήρια</h3>
+        <p>Αναλαμβάνουμε σχεδιασμό και εκτύπωση custom προσκλητηρίων που ταιριάζουν απόλυτα με το θέμα του πάρτι σου!</p>
+      </div>
+    </div>
+
+    <div class="extras">
+      <span>🤡 Παιδικά πάρτι με κλόουν</span>
+      <span>🎊 Μπομπονιέρες</span>
+      <span>📸 Φωτογραφήσεις</span>
+      <span>🎈 Διακόσμηση χώρου</span>
+      <span>✨ Ό,τι χρειαστεί!</span>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="vidsec" id="video">
+  <div class="wrap">
+    <h2 class="s-title fn">🎬 Η Τελευταία μου Δημιουργία</h2>
+    <p class="s-sub">Η πιο αγαπημένη μου! Δες την live ✨</p>
+    <div class="vid-wrap">
+      <video controls playsinline preload="metadata">
+        <source src="video.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="sparkles">🌟 💖 🐢 🎂 💖 🌟</div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-sec" id="gallery">
+  <div class="wrap">
+    <h2 class="s-title fn" style="color:#2E7D32">🖼 Οι Δουλειές μας</h2>
+    <p class="s-sub">Διάλεξε τι θέλεις να δεις!</p>
+
+    <div class="tabs">
+      <button class="tab-btn kids-tab active" onclick="switchTab('kids', this)">🧁 Παιδικές Τούρτες</button>
+      <button class="tab-btn adults-tab" onclick="switchTab('adults', this)">🎉 Τούρτες Ενηλίκων <span class="badge">18+</span></button>
+    </div>
+
+    <!-- Παιδικές -->
+    <div class="tab-panel active" id="tab-kids">
+      <div class="sshow" id="kids-ss">
+        <div class="sloader" id="kids-ld">
+          <div class="sl-ico">🐢</div>
+          <div class="sl-txt">Ετοιμάζουμε...</div>
+        </div>
+        <img id="kids-img" src="" alt="Παιδική τούρτα" style="opacity:0">
+        <button class="sarr pv" id="kids-pv" aria-label="Προηγούμενο">&#8249;</button>
+        <button class="sarr nx" id="kids-nx" aria-label="Επόμενο">&#8250;</button>
+        <div class="sdots" id="kids-dots"></div>
+        <div class="scnt" id="kids-cnt">1 / 7</div>
+      </div>
+    </div>
+
+    <!-- Ενηλίκων -->
+    <div class="tab-panel" id="tab-adults">
+      <div class="sshow" id="adults-ss">
+        <div class="sloader" id="adults-ld">
+          <div class="sl-ico">🎂</div>
+          <div class="sl-txt">Ετοιμάζουμε...</div>
+        </div>
+        <img id="adults-img" src="" alt="Τούρτα ενηλίκων" style="opacity:0">
+        <div class="blur-ov" id="adults-blur-ov" style="display:none">
+          <span class="bo-ico">🔞</span>
+          <button class="bo-btn" onclick="revealSensitive()">Ναι, είμαι 18+ 🎉</button>
+        </div>
+        <button class="sarr pv" id="adults-pv" aria-label="Προηγούμενο">&#8249;</button>
+        <button class="sarr nx" id="adults-nx" aria-label="Επόμενο">&#8250;</button>
+        <div class="sdots" id="adults-dots"></div>
+        <div class="scnt" id="adults-cnt">1 / 18</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ΕΠΙΚΟΙΝΩΝΙΑ -->
+<section class="ctsec" id="contact">
+  <div class="wrap">
+    <h2 class="s-title fn" style="color:#880E4F">Μίλα μας! 💬</h2>
+    <p class="s-sub">Πες μας για το πάρτι σου και μαζί θα βρούμε κάτι που θα ξεχαστεί! 🎉</p>
+    <div class="ct-card">
+      <div class="ct-hearts">💕 🐢 💕</div>
+      <h3 class="ct-name fn">Ιωάννα Βαρουξάκη</h3>
+      <p style="color:#bbb;font-size:.9rem">Τουρτίτσα Χελωνίτσα</p>
+      <a href="tel:6944759426" class="ct-ph">📞 6944 759 426</a>
+      <p class="ct-note">Στείλε μήνυμα ή κάλεσε! Θα χαρούμε να σε βοηθήσουμε 🥰</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="card.png" alt="" class="ft-logo">
+  <p>2026 Τουρτίτσα Χελωνίτσα - Ιωάννα Βαρουξάκη</p>
+  <p style="margin-top:.45rem;font-size:.68rem;opacity:.5">built with ❤ by <a href="mailto:heeelpgr@gmail.com">heeelpgr</a></p>
+</footer>
+
+<!-- back to top -->
+<button class="btt" id="btt" onclick="scrollTo({top:0,behavior:'smooth'})" aria-label="Πάνω">⬆</button>
+
+<script>
+/* SLIDESHOW - sensitive: array of indices που χρειαζονται blur */
+function Slideshow(prefix, imgs, emoji, sensitive) {
+  var img    = document.getElementById(prefix+'-img');
+  var loader = document.getElementById(prefix+'-ld');
+  var pvBtn  = document.getElementById(prefix+'-pv');
+  var nxBtn  = document.getElementById(prefix+'-nx');
+  var dotsEl = document.getElementById(prefix+'-dots');
+  var cntEl  = document.getElementById(prefix+'-cnt');
+  var ssEl   = document.getElementById(prefix+'-ss');
+  var blurOv = document.getElementById(prefix+'-blur-ov');
+
+  if (!img || !loader) return;
+  if (emoji) loader.querySelector('.sl-ico').textContent = emoji;
+
+  var cur = 0, timer, total = imgs.length;
+  var sensitiveSet = sensitive ? new Set(sensitive) : new Set();
+  var revealed = new Set();
+
+  imgs.forEach(function(_, i) {
+    var d = document.createElement('button');
+    d.className = 'sdot'+(i===0?' on':'');
+    d.setAttribute('aria-label','Slide '+(i+1));
+    d.addEventListener('click', function(){ stopT(); go(i); startT(); });
+    dotsEl.appendChild(d);
+  });
+
+  function updateUI() {
+    dotsEl.querySelectorAll('.sdot').forEach(function(d,i){ d.classList.toggle('on',i===cur); });
+    if (cntEl) cntEl.textContent = (cur+1)+' / '+total;
+  }
+
+  function go(n) {
+    cur = ((n%total)+total)%total;
+    loader.classList.remove('gone');
+    img.style.opacity='0';
+    if (blurOv) blurOv.style.display='none';
+    img.style.filter='';
+    var tmp = new Image();
+    tmp.onload = function(){
+      img.src=tmp.src; img.style.opacity='1'; loader.classList.add('gone');
+      if (sensitiveSet.has(cur) && !revealed.has(cur) && blurOv) {
+        img.style.filter='blur(28px) brightness(.7)';
+        blurOv.style.display='flex';
+      }
+    };
+    tmp.onerror = function(){
+      img.src=tmp.src; img.style.opacity='.5'; loader.classList.add('gone');
+    };
+    tmp.src = imgs[cur];
+    updateUI();
+  }
+
+  /* καλείται από το κουμπί 18+ πάνω στη φωτογραφία */
+  window['revealSensitive'] = function() {
+    revealed.add(cur);
+    img.style.filter='';
+    if (blurOv) blurOv.style.display='none';
+  };
+
+  function startT(){ clearInterval(timer); timer=setInterval(function(){go(cur+1);},4200); }
+  function stopT(){ clearInterval(timer); }
+
+  pvBtn.addEventListener('click',function(){ stopT(); go(cur-1); startT(); });
+  nxBtn.addEventListener('click',function(){ stopT(); go(cur+1); startT(); });
+
+  ssEl.addEventListener('mouseenter',stopT);
+  ssEl.addEventListener('mouseleave',startT);
+
+  var tx=0;
+  ssEl.addEventListener('touchstart',function(e){tx=e.changedTouches[0].clientX;},{passive:true});
+  ssEl.addEventListener('touchend',function(e){
+    var d=tx-e.changedTouches[0].clientX;
+    if(Math.abs(d)>40){stopT();go(cur+(d>0?1:-1));startT();}
+  },{passive:true});
+
+  go(0); startT();
+}
+
+var kidsImgs = [
+  'viber_image_2026-06-13_17-40-03-835.jpg',
+  'viber_image_2026-06-13_17-40-05-220.jpg',
+  'viber_image_2026-06-13_17-40-07-556.jpg',
+  'viber_image_2026-06-13_17-40-02-883.jpg',
+  'viber_image_2026-06-13_17-40-04-070.jpg',
+  'viber_image_2026-06-13_17-40-04-380.jpg',
+  'viber_image_2026-06-13_17-40-03-362.jpg'
+];
+
+var adultImgs = [
+  'viber_image_2026-06-13_17-40-02-653.jpg',
+  'viber_image_2026-06-13_17-40-02-691.jpg',
+  'viber_image_2026-06-13_17-40-02-797.jpg',
+  'viber_image_2026-06-13_17-40-02-842.jpg',
+  'viber_image_2026-06-13_17-40-02-982.jpg',
+  'viber_image_2026-06-13_17-40-03-089.jpg',
+  'viber_image_2026-06-13_17-40-03-010.jpg',
+  'viber_image_2026-06-13_17-40-02-923.jpg',
+  'viber_image_2026-06-13_17-40-03-161.jpg',
+  'viber_image_2026-06-13_17-40-03-562.jpg',
+  'viber_image_2026-06-13_17-40-03-747.jpg',
+  'viber_image_2026-06-13_17-40-04-242.jpg',
+  'viber_image_2026-06-13_17-40-07-467.jpg',
+  'viber_image_2026-06-13_17-40-03-711.jpg',
+  'viber_image_2026-06-13_17-40-03-524.jpg',
+  'viber_image_2026-06-13_17-40-03-488.jpg',
+  'viber_image_2026-06-13_17-40-07-636.jpg',
+  'viber_image_2026-06-13_17-43-53-232.jpg'
+];
+
+var adultsInited = false;
+
+/* tabs */
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  Slideshow('kids',   kidsImgs,  '🐢');
+  /* index 17 = η τελευταία φωτογραφία που χρειάζεται blur */
+  Slideshow('adults', adultImgs, '🎂', [17]);
+
+  /* promo cards reveal */
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        e.target.style.transition='opacity .52s ease,transform .52s ease,box-shadow .25s';
+      }
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.pc').forEach(function(c,i){
+    c.style.transitionDelay=(i*.08)+'s';
+    obs.observe(c);
+  });
+
+  /* sticky nav + btt */
+  var snav = document.getElementById('snav');
+  var btt  = document.getElementById('btt');
+  window.addEventListener('scroll',function(){
+    var y = window.scrollY;
+    var h = document.querySelector('.hero').offsetHeight;
+    snav.classList.toggle('up', y > h*.55);
+    btt.classList.toggle('show', y > 400);
+  });
+});
+</script>
+</body>
+</html>
