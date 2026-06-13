@@ -480,7 +480,7 @@ footer a:hover{color:rgba(255,255,255,.55)}
 </footer>
 
 <!-- back to top -->
-<button class="btt" id="btt" onclick="scrollTo({top:0,behavior:'smooth'})" aria-label="Πάνω">⬆</button>
+<button class="btt" id="btt" aria-label="Πάνω">⬆</button>
 
 <script>
 /* SLIDESHOW - sensitive: array of indices που χρειαζονται blur */
@@ -624,6 +624,7 @@ document.addEventListener('DOMContentLoaded', function() {
   /* sticky nav + btt */
   var snav = document.getElementById('snav');
   var btt  = document.getElementById('btt');
+  btt.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
   window.addEventListener('scroll',function(){
     var y = window.scrollY;
     var h = document.querySelector('.hero').offsetHeight;
